@@ -1,25 +1,19 @@
 <?php
 class Database
 {
-    private $host = "us-west.connect.psdb.cloud";
-    private $db_name = 'NursingVR';
-    private $username = 'n6zfvzbog0zcpp1y3t5k';
-    private $password = 'pscale_pw_eebZyF8tOJPkG5wjfi15GJq9w4ahI2Vae1IoU1dZEMd';
+    include_once("config.php");
+    // private $host = "us-west.connect.psdb.cloud";
+    // private $db_name = 'NursingVR';
+    // private $username = 'n6zfvzbog0zcpp1y3t5k';
+    // private $password = 'pscale_pw_eebZyF8tOJPkG5wjfi15GJq9w4ahI2Vae1IoU1dZEMd';
     private $conn;
 
-    //AWS RDS
-    // private $host = ".us-west-1.rds.amazonaws.com";
-    // private $db_name = '';
-    // private $username = '';
-    // private $password = '';
-    // private $conn;
-    // DB Connect
     public function connect()
     {
         $this->conn = null;
 
         try {
-            $this->conn = new PDO('mysql:host=' . $this->host . ';dbname=' . $this->db_name, $this->username, $this->password);
+            $this->conn = new PDO('mysql:host=' . $this->$db_host . ';dbname=' . $this->$db_name, $this->$db_username, $this->$db_password);
             $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         } catch (PDOException $e) {
             echo 'Connection Error: ' . $e->getMessage();
