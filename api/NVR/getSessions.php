@@ -48,3 +48,5 @@ $run_item = array(
 );
 array_push($results_arr, $run_item);
 print_r(json_encode($results_arr));
+
+?>
